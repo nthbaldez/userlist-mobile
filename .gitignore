@@ -68,3 +68,4 @@ yarn-error.log
 # api modules
 
 /api/node_modules
+.bundle
