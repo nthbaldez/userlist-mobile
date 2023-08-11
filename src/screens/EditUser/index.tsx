@@ -1,10 +1,10 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-export function UserSettings() {
+export function EditUser() {
   return (
     <View>
-      <Text>User edit</Text>
+      <Text>Edit User</Text>
     </View>
   );
 }

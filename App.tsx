@@ -7,11 +7,14 @@
 
 import React from 'react';
 import {Routes} from './src/routes';
+import {ModalProvider} from './src/contexts/ModalContext';
 
 function App(): JSX.Element {
   return (
     <>
-      <Routes />
+      <ModalProvider>
+        <Routes />
+      </ModalProvider>
     </>
   );
 }

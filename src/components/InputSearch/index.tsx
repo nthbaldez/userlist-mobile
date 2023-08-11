@@ -16,7 +16,7 @@ export default function InputSearch() {
         placeholder="Search..."
         value={searchValue}
         onChangeText={(value: string) => handleOnChangeSearch(value)}
-        autoFocus={true}
+        autoFocus={false}
         className="bg-[#F8F9FA] rounded-full h-[36] px-[20]"
       />
     </StyledView>
