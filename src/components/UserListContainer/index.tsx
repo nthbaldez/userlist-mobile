@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {GetUsers} from '../../services/Users/UserService';
 import {
-  Alert,
-  Dimensions,
   FlatList,
   Modal,
   StyleSheet,
@@ -11,19 +9,22 @@ import {
   View,
 } from 'react-native';
 import InputSearch from '../InputSearch';
-// import {
-//   NavigationProp,
-//   ParamListBase,
-//   useNavigation,
-// } from '@react-navigation/native';
 
 import ElizaSVG from './../../assets/eliza.svg';
 import MatheusSVG from './../../assets/matheus.svg';
 import IcaroSVG from './../../assets/icaro.svg';
 import LeandroSVG from './../../assets/leandro.svg';
+import UserListSVG from '../../assets/user.svg';
 
 import {useModalMenu} from '../../hooks/useModalMenu';
 import {Icon} from 'react-native-elements';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
+
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 interface UserProps {
   id: number;
@@ -37,7 +38,7 @@ interface UserProps {
 
 export default function UserListContainer() {
   const [users, setUsers] = useState<UserProps[]>([]);
-  // const {navigate}: NavigationProp<ParamListBase> = useNavigation();
+  const {navigate}: NavigationProp<ParamListBase> = useNavigation();
 
   const {openModal, isModalOpen, closeModal} = useModalMenu();
 
@@ -57,26 +58,35 @@ export default function UserListContainer() {
     fetchData();
   }, []);
 
+  const handleEditNavigate = () => {
+    console.log('navigate edit');
+    navigate('EditUser');
+  };
+
+  const handleOpenModal = () => {
+    openModal();
+  };
+
   return (
     <View className="flex">
       <Modal animationType="fade" transparent={true} visible={isModalOpen}>
         <View style={styles.overlay}>
           <View className="m-auto bg-white w-[220] h-[200] rounded-lg flex flex-col">
-            <View className="flex m-[6] items-end">
+            <View className="h-[50] flex mr-[8] pt-[8] items-end">
               <TouchableOpacity onPress={() => closeModal()}>
-                <Icon name="close" size={20} />
+                <Icon name="close" size={25} />
               </TouchableOpacity>
             </View>
 
-            <View className="w-full flex flex-col justify-center items-center gap-[10] mt-[10px]">
+            <View className="w-full flex flex-col justify-center items-center gap-[10] ">
               <Text
                 className="text-[20px] font-medium text-center pb-3"
-                onPress={closeModal}>
+                onPress={() => handleEditNavigate()}>
                 Edit
               </Text>
               <View className="border-b-slate-100 border-b-2 w-[60%]" />
               <Text
-                className="text-[20px] pt-3 font-medium"
+                className="text-[20px] pt-4 font-medium"
                 onPress={closeModal}>
                 Delete
               </Text>
@@ -87,10 +97,14 @@ export default function UserListContainer() {
 
       <InputSearch />
       <View className="flex flex-row justify-between items-center mt-[40px]">
-        <Text className="flex items-center text-center w-[240px] bg-[#9747FF] text-[16px] text-white font-semibold py-[15] rounded-r-full">
-          {/* <UserListSvg /> */}
-          User List
-        </Text>
+        <View className="flex items-center justify-start flex-row text-center w-[240px] bg-[#9747FF] py-[15] rounded-r-full">
+          <View className="flex items-center justify-start flex-row pl-4 gap-4">
+            <UserListSVG />
+            <Text className="text-[16px] text-white font-semibold">
+              User List
+            </Text>
+          </View>
+        </View>
         <Text className="mr-[20px] text-[18px] font-medium">
           All ({users.length})
         </Text>
@@ -157,9 +171,9 @@ export default function UserListContainer() {
                     {item.birthDate}
                   </Text>
                   <TouchableOpacity
-                    className="w-[100px] px-[9px] py-[12px] text-[16px] m-auto"
-                    onPress={() => openModal()}>
-                    <Text className="m-auto text-center">...</Text>
+                    className="w-[100px] px-[9px] py-[12px] text-[16px] m-auto flex justify-center items-center"
+                    onPress={handleOpenModal}>
+                    <AntDesign className="m-auto" name="ellipsis1" size={20} />
                   </TouchableOpacity>
                 </View>
               </>

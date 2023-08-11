@@ -8,7 +8,6 @@ export function NewUserScreen() {
       <InputSearch />
       <View className="flex flex-row justify-between items-center mt-[30px]">
         <Text className="flex items-center text-center w-[240px] bg-[#9747FF] text-[16px] text-white font-semibold py-[15] rounded-r-full">
-          {/* <UserListSvg /> */}
           New User
         </Text>
       </View>
