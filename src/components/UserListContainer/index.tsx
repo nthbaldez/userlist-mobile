@@ -135,6 +135,9 @@ export default function UserListContainer() {
                 )}
                 <View className="flex flex-row py-[4] justify-center items-center border-b-slate-200  border-b-2">
                   <View className="mx-[12]">
+                    {!item.image && (
+                      <View className="bg-slate-100 w-[45px] h-[45px] rounded-full" />
+                    )}
                     {item.name === 'Eliza César' && (
                       <ElizaSVG
                         width={45}
@@ -164,6 +167,7 @@ export default function UserListContainer() {
                       />
                     )}
                   </View>
+
                   <Text className="w-[145px] px-[9px] py-[12px] flex items-start text-[16px]">
                     {item.name}
                   </Text>
