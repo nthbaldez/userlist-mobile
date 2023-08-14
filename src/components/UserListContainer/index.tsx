@@ -41,7 +41,14 @@ export default function UserListContainer() {
   const [users, setUsers] = useState<UserProps[]>([]);
   const {navigate}: NavigationProp<ParamListBase> = useNavigation();
 
-  const {openModal, isModalOpen, closeModal} = useModalMenu();
+  const {
+    isModalOpen,
+    isConfirmModalOpen,
+    openModal,
+    closeModal,
+    openConfirmModal,
+    closeConfirmModal,
+  } = useModalMenu();
   const {userToBeHandle, setUserToBeHandle, handleDelete} = useHandleUser();
 
   useEffect(() => {
@@ -69,8 +76,17 @@ export default function UserListContainer() {
     openModal();
   };
 
-  const handleDeleterUser = () => {
+  const handleDeleteUser = () => {
+    openConfirmModal();
+  };
+
+  const confirmDelete = () => {
     handleDelete(userToBeHandle.id);
+    closeModals();
+  };
+
+  const closeModals = () => {
+    closeConfirmModal();
     closeModal();
   };
 
@@ -80,7 +96,7 @@ export default function UserListContainer() {
         <View style={styles.overlay}>
           <View className="m-auto bg-white w-[220] h-[200] rounded-lg flex flex-col">
             <View className="h-[50] flex mr-[8] pt-[8] items-end">
-              <TouchableOpacity onPress={() => closeModal()}>
+              <TouchableOpacity onPress={closeModals}>
                 <Icon name="close" size={25} />
               </TouchableOpacity>
             </View>
@@ -94,9 +110,44 @@ export default function UserListContainer() {
               <View className="border-b-slate-100 border-b-2 w-[60%]" />
               <Text
                 className="text-[20px] pt-4 font-medium"
-                onPress={handleDeleterUser}>
+                onPress={handleDeleteUser}>
                 Delete
               </Text>
+            </View>
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={isConfirmModalOpen}>
+        <View style={styles.overlay}>
+          <View className="m-auto bg-white w-[220] h-[200] rounded-lg flex flex-col">
+            <View className="flex w-full h-[30px] justify-end items-end mr-[10px]">
+              <TouchableOpacity onPress={closeModals}>
+                <Icon name="close" size={25} />
+              </TouchableOpacity>
+            </View>
+
+            <View className="w-full flex flex-col justify-center items-center gap-[16px] px-[24px] py-[20px] mb-[36px]">
+              <Text className="text-[16px]">
+                Would you like to delete this user??
+              </Text>
+            </View>
+
+            <View className="flex flex-row items-center justify-center gap-[8px]">
+              <TouchableOpacity
+                className="col-auto w-auto border-solid hover:bg-slate-100 border-2 border-[#E5E7EB] text-sm px-[12px] py-[4px] rounded-lg"
+                onPress={closeModals}>
+                <Text>No, cancel</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                className="flex justify-center items-center w-[60] bg-violet-500 hover:bg-violet-600 text-white text-sm px-[12px] py-[4px] rounded-lg"
+                onPress={confirmDelete}>
+                <Text className="text-white">Yes</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -166,9 +217,13 @@ export default function UserListContainer() {
                     {item.birthDate}
                   </Text>
                   <TouchableOpacity
-                    className="w-[100px] px-[9px] py-[12px] text-[16px] m-auto flex justify-center items-center"
+                    className="w-[65px] px-[9px] py-[12px] text-[16px]"
                     onPress={() => handleOpenModal({...item})}>
-                    <AntDesign className="m-auto" name="ellipsis1" size={20} />
+                    <AntDesign
+                      className="m-auto mr-[12px]"
+                      name="ellipsis1"
+                      size={20}
+                    />
                   </TouchableOpacity>
                 </View>
               </>

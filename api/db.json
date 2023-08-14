@@ -6,8 +6,8 @@
       "birthDate": "20/12/1993",
       "address": "Rua Natal",
       "telephoneNumber": "99675-0941",
-      "status": "Done",
-      "image": "/eliza.png"
+      "image": "/eliza.svg",
+      "status": "Done"
     },
     {
       "id": "2",
@@ -35,13 +35,6 @@
       "telephoneNumber": "99675-0941",
       "status": "Cancel",
       "image": "/icaro.svg"
-    },
-    {
-      "name": "Nathan Baldez",
-      "birthDate": "08/11/1993",
-      "address": "Avenida Central 256",
-      "telephoneNumber": "61991363677",
-      "id": "0704755665"
     }
   ]
 }
