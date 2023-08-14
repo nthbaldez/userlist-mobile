@@ -15,7 +15,7 @@
 <h2 id="layout">🎨 Layout</h2>
 
 <p align="center">
-  <img src="'./src/assets/userlist-app-1" alt="Image Example" width="400px">
+  <img src="'/assets/userlist-app-1" alt="Image Example" width="400px">
 </p>
 
 <h2 id="technologies">💻 Technologies</h2>
