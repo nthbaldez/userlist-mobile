@@ -1,79 +1,100 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<h1 align="center" style="font-weight: bold;">Petshop E-commerce</h1>
 
-# Getting Started
+<p align="center">
+ <a href="#tech">Technologies</a> • 
+ <a href="#started">Getting Started</a> • 
+  <a href="#colab">Collaborators</a> •
+ <a href="#contribute">Contribute</a>
+</p>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+<p align="center">
+  <b>A Management Users App, in React Native.</b>
+</p>
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+<h2 id="layout">🎨 Layout</h2>
 
-To start Metro, run the following command from the _root_ of your React Native project:
+<p align="center">
+  <img src="'./src/assets/userlist-app-1" alt="Image Example" width="400px">
+</p>
+
+<h2 id="technologies">💻 Technologies</h2>
+
+- React
+- React Native
+- Nativewind
+- React hook form
+- Zup
+- json-server
+
+<h2 id="started">🚀 Getting started</h2>
+
+<h3>Prerequisites</h3>
+
+Here are the prerequisites to run this project:
+
+- [NodeJS](https://nodejs.org/en)
+- [Git](https://git-scm.com/downloads)
+
+Necessary set up the development environment to run this project without Expo.
+
+Check the link
 
 ```bash
-# using npm
+  https://reactnative.dev/docs/environment-setup
+```
+
+<h3>Cloning</h3>
+
+How to clone this project
+
+```bash
+git clone https://github.com/nthbaldez/userlist-mobile.git
+```
+
+<h3>Starting</h3>
+
+How to start your project
+
+```bash
+cd project-name
+npm install
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+How to start the api for the project
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+cd api
+npm start
 ```
 
-### For iOS
+<h2 id="colab">🤝 Collaborators</h2>
 
-```bash
-# using npm
-npm run ios
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/nthbaldez" width="100px;" alt="Nathan Baldez Developer Profile"/><br>
+        <sub>
+          <b>Nathan Baldez</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-# OR using Yarn
-yarn ios
-```
+<h2 id="contribute">📫 Contribute</h2>
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+Here you will explain how other developers can contribute to your project. For example, explaining how can create their branches, which patterns to follow and how to open an pull request
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+1. `git clone https://github.com/nthbaldez/userlist-mobile.git`
+2. `git checkout -b feature/NAME`
+3. Follow commit patterns
+4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
 
-## Step 3: Modifying your App
+<h3>Documentations that might help</h3>
 
-Now that you have successfully run the app, let's modify it.
+[📝 How to create a Pull Request](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+[💾 Commit pattern](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
