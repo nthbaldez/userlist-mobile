@@ -14,7 +14,6 @@ export function UserList() {
 
   const handleNavigationNewUser = () => {
     navigate('NewUser');
-    console.log('new user');
   };
 
   return (

@@ -1,12 +1,33 @@
 import {api} from '../api';
-import uuid from 'react-native-uuid';
 
 interface CreateUserProps {
   name: string;
   birthDate: string;
   address: string;
-  telephoneNumber: number;
+  telephoneNumber: string;
 }
+
+interface UpdateUserProps {
+  id: string;
+  name?: string;
+  birthDate?: string;
+  address?: string;
+  telephoneNumber?: string;
+}
+
+function generateRandomID() {
+  const length = 10;
+  const characters = '0123456789';
+  let id = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    id += characters.charAt(randomIndex);
+  }
+
+  return id;
+}
+
 export async function GetUsers() {
   let urlAPI = `${api.defaults.baseURL}/users`;
 
@@ -16,7 +37,6 @@ export async function GetUsers() {
       'Content-Type': 'application/json',
     },
   };
-  console.log('api ' + urlAPI);
   return await api.get(urlAPI, header);
 }
 
@@ -27,7 +47,7 @@ export async function CreateUser(payload: CreateUserProps) {
       birthDate: payload.birthDate,
       address: payload.address,
       telephoneNumber: payload.telephoneNumber,
-      id: uuid.v4(),
+      id: generateRandomID(),
     })
     .then(function (response) {
       console.log(response);
@@ -35,4 +55,22 @@ export async function CreateUser(payload: CreateUserProps) {
     .catch(function (error) {
       console.log(error);
     });
+}
+
+export async function UpdateUser(payload: UpdateUserProps) {
+  try {
+    const response = await api.put(`/users/${payload.id}`, payload);
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
+}
+
+export async function DeleteUser(userID: string) {
+  try {
+    const response = await api.delete(`/users/${userID}`);
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
 }

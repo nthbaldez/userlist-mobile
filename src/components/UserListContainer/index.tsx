@@ -25,15 +25,16 @@ import {
 } from '@react-navigation/native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useHandleUser} from '../../hooks/useHandleUser';
 
 interface UserProps {
-  id: number;
+  id: string;
   name: string;
   birthDate: string;
   address: string;
   telephoneNumber: string;
-  status: string;
   image: string;
+  status: string;
 }
 
 export default function UserListContainer() {
@@ -41,6 +42,7 @@ export default function UserListContainer() {
   const {navigate}: NavigationProp<ParamListBase> = useNavigation();
 
   const {openModal, isModalOpen, closeModal} = useModalMenu();
+  const {userToBeHandle, setUserToBeHandle, handleDelete} = useHandleUser();
 
   useEffect(() => {
     async function fetchData() {
@@ -59,12 +61,17 @@ export default function UserListContainer() {
   }, []);
 
   const handleEditNavigate = () => {
-    console.log('navigate edit');
     navigate('EditUser');
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (user: UserProps) => {
+    setUserToBeHandle(user);
     openModal();
+  };
+
+  const handleDeleterUser = () => {
+    handleDelete(userToBeHandle.id);
+    closeModal();
   };
 
   return (
@@ -87,7 +94,7 @@ export default function UserListContainer() {
               <View className="border-b-slate-100 border-b-2 w-[60%]" />
               <Text
                 className="text-[20px] pt-4 font-medium"
-                onPress={closeModal}>
+                onPress={handleDeleterUser}>
                 Delete
               </Text>
             </View>
@@ -139,32 +146,16 @@ export default function UserListContainer() {
                       <View className="bg-slate-100 w-[45px] h-[45px] rounded-full" />
                     )}
                     {item.name === 'Eliza César' && (
-                      <ElizaSVG
-                        width={45}
-                        height={45}
-                        onPress={() => openModal()}
-                      />
+                      <ElizaSVG width={45} height={45} />
                     )}
                     {item.name === 'Matheus Sukso' && (
-                      <MatheusSVG
-                        width={45}
-                        height={45}
-                        onPress={() => openModal()}
-                      />
+                      <MatheusSVG width={45} height={45} />
                     )}
                     {item.name === 'Leandro Reis' && (
-                      <LeandroSVG
-                        width={45}
-                        height={45}
-                        onPress={() => openModal()}
-                      />
+                      <LeandroSVG width={45} height={45} />
                     )}
                     {item.name === 'Icaro Monteiro' && (
-                      <IcaroSVG
-                        width={45}
-                        height={45}
-                        onPress={() => openModal()}
-                      />
+                      <IcaroSVG width={45} height={45} />
                     )}
                   </View>
 
@@ -176,7 +167,7 @@ export default function UserListContainer() {
                   </Text>
                   <TouchableOpacity
                     className="w-[100px] px-[9px] py-[12px] text-[16px] m-auto flex justify-center items-center"
-                    onPress={handleOpenModal}>
+                    onPress={() => handleOpenModal({...item})}>
                     <AntDesign className="m-auto" name="ellipsis1" size={20} />
                   </TouchableOpacity>
                 </View>

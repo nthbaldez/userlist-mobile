@@ -34,7 +34,7 @@ export default function ControlledInput({
       {error &&
         Alert.alert('', error.message, [
           {
-            text: 'Feche para continuar',
+            text: 'Fechar',
             onPress: () => console.log('Cancel Pressed'),
             style: 'cancel',
           },

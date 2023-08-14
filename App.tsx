@@ -8,12 +8,15 @@
 import React from 'react';
 import {Routes} from './src/routes';
 import {ModalProvider} from './src/contexts/ModalContext';
+import {HandleUserProvider} from './src/contexts/HandleUserContext';
 
 function App(): JSX.Element {
   return (
     <>
       <ModalProvider>
-        <Routes />
+        <HandleUserProvider>
+          <Routes />
+        </HandleUserProvider>
       </ModalProvider>
     </>
   );

@@ -14,12 +14,11 @@ export const ModalProvider = ({children}: ModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    console.log('open');
-    setIsModalOpen(true);
+    setIsModalOpen(prev => !prev);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(prev => !prev);
   };
 
   return (

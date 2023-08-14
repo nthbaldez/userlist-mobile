@@ -19,7 +19,7 @@ interface FormProps {
   name: string;
   birthDate: string;
   address: string;
-  telephoneNumber: number;
+  telephoneNumber: string;
 }
 
 const schema = yup.object({
@@ -33,10 +33,11 @@ const schema = yup.object({
     }),
   address: yup.string().required('Informe seu endereço'),
   telephoneNumber: yup
-    .number()
+    .string()
     .required('Informe o número completo com o DDD')
-    .positive()
-    .integer()
+    .test('valid-number', 'Número Inválido', function (value) {
+      return /^\d{11}$/.test(value);
+    })
     .min(11),
 });
 
@@ -62,7 +63,6 @@ export function NewUserScreen() {
 
   const handleUserRegister = (data: FormProps) => {
     saveNewUser(data);
-    console.log(data);
   };
 
   return (
@@ -101,7 +101,7 @@ export function NewUserScreen() {
             name="birthDate"
             control={control}
             className="bg-gray-100 rounded-sm w-full mb-2 focus:bg-white"
-            placeholder=""
+            placeholder="DD/MM/YYYY"
             error={errors.birthDate}
           />
         </View>
