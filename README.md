@@ -1,4 +1,4 @@
-<h1 align="center" style="font-weight: bold;">Petshop E-commerce</h1>
+<h1 align="center" style="font-weight: bold;">User list Mobile App</h1>
 
 <p align="center">
  <a href="#tech">Technologies</a> • 
